@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Groupie Tracker</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1{
+            text-align:center;
+        }
+
+        .full-width-text {
+            background-color: black;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .image-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+        .section{
+            text-align:center;*
+        padding:50px;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 100%;
+        }
+
+        .image-section p {
+            margin-top: 20px;
+        }
+        .section p, h2{
+            color: white;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            max-width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .sort {
+            color : white;
+        }
+
+        .card {
+            width: 25%;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-section {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            text-align: center;
+        }
+
+        .section p {
+            margin: 0;
+        }
+        .search-bar input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        img{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            align-content: center;
+            border-radius:100%;
+        }
+
+        img:hover{
+            transform:scale(1.2) ;
+            transition-duration: 1s;
+            box-shadow: white;
+            filter:brightness(2);
+        }
+
+        .search-bar input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="full-width-text">
+    <h1>GROUPIE-TRACKER</h1>
+</div>
+<div class="search-bar">
+    <form method="post" action="/search">
+        <input type="text" name="searchTerm" placeholder="Search for an artist or a song">
+        <input type="submit" value="Search">
+    </form>
+</div>
+
+<div class="sort">
+    <form method="post" action="/filters">
+        <div class="sort-by-date">
+            <p>Création du groupe : </p>
+            <label for="minCreationYear">Entre</label>
+            <input type="number" id="minCreationYear" name="minCreationYear" placeholder="Min">
+            <label for="maxCreationYear">et</label>
+            <input type="number" id="maxCreationYear" name="maxCreationYear" placeholder="Max">
+        </div>
+
+        <div class="sort-by-nbrOfMembers">
+            <p>Nombre de membres dans le groupe :</p>
+            <input type="checkbox" id="numMembers1" name="numMembers[]" value="1">
+            <label for="numMembers1">1</label>
+            <input type="checkbox" id="numMembers2" name="numMembers[]" value="2">
+            <label for="numMembers2">2</label>
+            <input type="checkbox" id="numMembers3" name="numMembers[]" value="3">
+            <label for="numMembers1">3</label>
+            <input type="checkbox" id="numMembers4" name="numMembers[]" value="4">
+            <label for="numMembers2">4</label>
+            <input type="checkbox" id="numMembers5" name="numMembers[]" value="5">
+            <label for="numMembers1">5</label>
+            <input type="checkbox" id="numMembers6" name="numMembers[]" value="6">
+            <label for="numMembers2">6</label>
+            <input type="checkbox" id="numMembers7" name="numMembers[]" value="7">
+            <label for="numMembers1">7</label>
+            <input type="checkbox" id="numMembers8" name="numMembers[]" value="8">
+            <label for="numMembers2">8</label>
+            <input type="checkbox" id="numMembers9" name="numMembers[]" value="9">
+            <label for="numMembers2">9</label>
+            <input type="checkbox" id="numMembersAll" name="numMembers[]" value="">
+            <label for="numMembers2">All</label>
+        </div>
+
+        <label for="country">Choisir un pays :</label>
+        <input list="countries" id="country" name="country">
+        <datalist id="countries">
+            <option value="USA">usa</option>
+            <option value="New">Nouvelle-Zélande</option>
+            <option value="Germany">Allemagne</option>
+            <option value="Italy">Italie</option>
+            <option value="Japan">Japon</option>
+            <option value="new_caledonia">Caledonia</option>
+            <option value="Polynesia">Polynésie</option>
+            <option value="Mexico">Mexique</option>
+            <option value="Switzerland">Suisse</option>
+            <option value="UK">Royaume-Uni</option>
+            <option value="Slovakia">Slovaquie</option>
+            <option value="Hungary">Hongrie</option>
+            <option value="Belarus">Biélorussie</option>
+            <option value="Australia">Australie</option>
+            <option value="Indonesia">Indonésie</option>
+            <option value="Argentina">Argentine</option>
+            <option value="Brazil">Brésil</option>
+            <option value="Spain">Espagne</option>
+            <option value="Colombia">Colombie</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Sweden">Suède</option>
+            <option value="Belgium">Belgique</option>
+            <option value="Denmark">Danemark</option>
+            <option value="India">Inde</option>
+            <option value="France">France</option>
+            <option value="Netherlands">Pays-Bas</option>
+            <option value="Arabia">Arabie</option>
+            <option value="Ireland">Irlande</option>
+            <option value="Poland">Pologne</option>
+            <option value="China">Chine</option>
+            <option value="Finland">Finlande</option>
+            <option value="Chile">Chili</option>
+            <option value="Canada">Canada</option>
+            <option value="Emirates">Émirats</option>
+            <option value="Thailand">Thaïlande</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Korea">Corée</option>
+            <option value="Taiwan">Taïwan</option>
+            <option value="Antilles">Antilles</option>
+            <option value="Rica">Costa Rica</option>
+            <option value="Colombia">Colombie</option>
+        </datalist>
+
+        <div class="sort-by-date-FirstAlbulm">
+            <p>Date de sortie du 1er album : </p>
+            <input type="range" id="input" name="input" class="range" min="1958" max="2021" value="2021" onchange="show()">
+            <input type="hidden" id="minYear" name="minYear" value="1958">
+            <p>Entre 1958 et <span id="dateOutput"></span></p>
+        </div>
+
+        <div id="PageChoosing"></div>
+        <input type="submit" value="Apply Filters">
+    </form>
+</div>
+<div class="container">
+    {{range .}}
+    <div class="card">
+        <div class="image-section">
+            <a href="/singleArtist?name={{.Name}}">
+                <img src="{{.Image}}" alt="{{.Name}}" class="card-image">
+            </a>
+        </div>
+        <div class="section">
+            <h2>{{.Name}}</h2>
+            <p>ID: {{.Id}}</p>
+        </div>
+    </div>
+    {{end}}
+    <a href="/singleArtist?name={{.Name}}">
+        <img src="{{.Image}}" alt="{{.Name}}" class="card-image">
+    </a>
+</div>
+</body>
+</html>

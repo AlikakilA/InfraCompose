@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtering Project</title>
+    <style>
+        /* Styling for better appearance */
+        .filter-container {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Filtering Project</h1>
+
+<div id="sort">
+    <div class="sort-by-date">
+        <p>Création du groupe : </p>
+        <label>  Entre </label>
+        <div class="min" id="mini"></div>
+        <label>  et </label>
+        <div class="max" id="maxi"></div>
+    </div>
+
+    <div class="exp">
+        <div class="sort-by-nbrOfMembers">
+            <p>Nombre de membres dans le groupe : </p>
+            <div class="checkbox" id="MemberSort"></div>
+        </div>
+    </div>
+
+    <div class="sort-by-date-FirstAlbulm">
+        <p>Date de sortie du 1er albulm : </p>
+        <input type="range" id="input-range" class="range" min="1958" max="2021" value="2021" onchange="show()">
+        <p> Entre 1958 et <span id="dateOutput"></span></p>
+    </div>
+
+    <div id="PageChoosing"></div>
+</div>
+</body>
+</html>

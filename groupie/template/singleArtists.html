@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #fff;
+            padding: 20px;
+            background: rgb(60, 62, 68);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container h1, .container p, .container ul {
+            text-align: center;
+        }
+        .artist-info img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .artist-info h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .artist-info p {
+            margin: 5px 0;
+        }
+        .artist-info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .dates-locations {
+            margin-top: 20px;
+        }
+        .dates-locations h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .dates-locations ul {
+            margin: 10px 0;
+            padding-left: 20px;
+            text-align: center;
+        }
+
+        .dates-locations ul li, .artist-info ul li {
+            margin-bottom: 5px;
+            list-style: none;
+            display: block;
+            align-items: center;
+        }
+
+        .dates-locations ul li::before, .artist-info ul li::before{
+            content: '\00B7';
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="artist-info">
+        <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
+        <h1>{{.Artist.Name}}</h1>
+        <p>ID: {{.Artist.Id}}</p>
+        <p>Members:</p>
+        <ul>
+            {{range .Artist.Members}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        <p>Creation Date: {{.Artist.CreationDate}}</p>
+        <p>First Album: {{.Artist.FirstAlbum}}</p>
+    </div>
+    <div class="dates-locations">
+        <h2>Dates Locations:</h2>
+        <ul>
+            {{range $location, $dates := .DatesLocations}}
+            <li>{{ $location }}</li>
+            <ul>
+                {{range $dates}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+            {{end}}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

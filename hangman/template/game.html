@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href ="../static/game.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hangman Web</title>
+
+</head>
+
+<body>
+
+<a id =NP href ={{.Level}}> Nouveau mot</a>
+<a id=NNP href = "/choix">Nouvelle partie</a>
+
+<img src={{.Image}} alt="image pendu"/>
+<audio autoplay loop>
+    <source src={{.Song}} type="audio/mpeg">
+</audio>
+<h1>{{.Title}}</h1>
+<h2>{{.Content}}</h2>
+<h3>Il vous reste : {{.Stage}} vies !</h3>
+<h4>{{.Mot}}</h4>
+<audio id="background-music" autoplay>
+    <source src={{.LiSong}} type="audio/mpeg">
+    Votre navigateur ne prend pas en charge l'audio HTML5.
+</audio>
+
+
+<form id="letterForm" action="/start" method="post">
+    <label for="letterInput"></label>
+    <br>
+    <input type="text" id="letterInput" name="letterInput" maxlength="16" required >
+    <br>
+    <input type="submit" value="Envoyer" >
+</form>
+
+</body>
+<script>
+    document.addEventListener("keydown", function(event) {
+        if (event.key=="Enter") {
+            // Récupérer l'élément audio
+            var audio = document.getElementById("background-music");
+            // Démarrer la lecture audio
+            audio.play();
+        }
+    });
+</script>
+
+</html>

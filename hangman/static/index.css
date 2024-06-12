@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    background-image:url("../ressources/images/chat_drole.jpg");
+    background-color: #000000;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+    margin: 0;
+    position: relative;
+    border-bottom: 24px solid #333333;
+    border-bottom-color: #0004FF;
+    border-left: 23px solid #0004FF;
+    border-top: 23px solid #333333;
+    border-top-color: #0004FF;
+    border-right: 23px solid #333333;
+    border-right-color: #0004FF;
+}
+a {
+    text-decoration: none;
+    padding: 50px;
+    background-color: #0004FF;
+    cursor: pointer;
+    transition: all 1s ease;
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
+}
+a:hover {
+    transform: scale(2);
+}
